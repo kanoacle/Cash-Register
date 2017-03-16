@@ -1,0 +1,75 @@
+*{
+  box-sizing: border-box;
+}
+
+.wrap{
+  max-width: 625px;
+  margin: 0 auto;
+  background-color: #CECDCC;
+  padding: 50px;
+  min-height: 650px;
+  -webkit-box-shadow: 10px 15px 3px 1px #616464;
+  box-shadow: 5px 10px 10px 1px #616464;
+}
+
+button{
+  font-size: 40px;
+  width: 32%;
+  padding: 16.5px 5%;
+  background-color: #B2B3B4;
+  -webkit-box-shadow: 10px 15px 3px 1px #616464;
+  box-shadow: 5px 5px 5px 5px #616464;
+
+}
+
+hr {
+  border:2px solid #000;
+  margin-bottom:30px;
+  width: 100%;
+}
+
+input{
+  width: 525px;
+  height: 50px;
+  font-size: 36px;
+  margin-bottom: 25px;
+  background-color: #71A933;
+}
+
+.first-col{
+  width: 45%;
+  float: left;
+  background-color: #616464;
+}
+
+.second-col{
+  width: 12.5%;
+  float: left;
+  background-color: #616464;
+}
+
+.third-col{
+  width: 42.5%;
+  float: left;
+  background-color: #616464;
+}
+
+#operatorButtons button{
+  display: block;
+  width: 95%;
+  margin-left: 2.5%;
+  padding: 8px 5.5%;
+  background-color: #88739F;
+}
+
+#functionButtons button{
+  display: block;
+  width: 95%;
+  margin-right: 2.5%;
+  margin-left: 2.5%;
+  font-size: 25px;
+  padding: 11px 15.5px;
+  background-color: #9FCCB4;
+  font-family: "Lucida Console", Monaco, monospace;
+  font-weight: 100;
+}
