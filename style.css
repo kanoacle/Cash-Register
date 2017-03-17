@@ -9,7 +9,7 @@ body{
 }
 
 .wrap{
-  width: 33.3vw;
+  width: 35vw;
   background-color: #CECDCC;
   padding: 1vw;
   height: 70%;
@@ -18,18 +18,26 @@ body{
   border: 5px solid rgba(0, 0, 0, 0.5);
   border-radius: 7px;
   position: absolute;
-  left: 33.3%;
-  top: 15%;
+  left: 32.5%;
+  top: 12.5%;
+}
+
+#buttons{
+  width: 31.25vw;
+  height: 41.25vh;
+  background-color: #616464;
+  padding-top: 0.25vw;
+  margin: 0 auto;
 }
 
 button{
-  font-size: 3vw;
-  width: 31.3%;
-  padding: 1.5vh .1vw;
+  font-size: 3vh;
+  width: 4vw;
+  height: 10vh;
   background-color: #B2B3B4;
   -webkit-box-shadow: 5px 5px 10px 1px #616464;
   box-shadow: 5px 5px 10px 1px #616464;
-
+  margin: 0.015vw;
 }
 
 hr {
@@ -38,48 +46,53 @@ hr {
   width: 100%;
 }
 
-input{
-  width: 30.5vw;
+#display{
+  width: 32vw;
   height: 50px;
-  font-size: 5vh;
+  font-size: 4.5vh;
   margin-bottom: 25px;
   background-color: #71A933;
   color: #100E10;
   border: 3px solid rgba(0, 0, 0, 0.5);
+  padding-left: 1vw;
+  letter-spacing: 0.25vw;
 }
 
 .first-col{
-  width: 45%;
+  width: 13.25vw;
+  height: 40.85vh;
   float: left;
-  background-color: #616464;
+  margin-left: 0.25vw
 }
 
 .second-col{
-  width: 12.5%;
+  width: 3.75vw;
+  height: 40.85vh;
   float: left;
-  background-color: #616464;
 }
 
 .third-col{
-  width: 42.5%;
+  width: 14vw;
+  height: 40.85vh;
   float: left;
-  background-color: #616464;
 }
 
 #operatorButtons button{
   display: block;
-  width: 95%;
-  padding: .45vh 0.5vw;
+  font-size: 3vh;
+  width: 3vw;
+  height: 7.75vh;
   background-color: #88739F;
+  margin-bottom: 0.175vw;
 }
 
 #functionButtons button{
   display: block;
-  width: 95%;
-  margin-left: 2.5%;
+  width: 13.5vw;
+  height: 10vh;
   font-size: 2.44vh;
-  padding: 2.15vh .5vw;
   background-color: #9FCCB4;
   font-family: "Lucida Console", Monaco, monospace;
   font-weight: 100;
+  margin: 0.015vw;
 }
