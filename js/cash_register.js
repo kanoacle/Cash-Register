@@ -1,9 +1,8 @@
 var myCalc = calculatorModule();
 var memory = myCalc.recallMemory();
-var num = '0.00';
 
 var base = (function () {
-  return parseInt(num);
+  return parseInt(memory);
 })();
 
 function displayNum () {
