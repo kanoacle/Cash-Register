@@ -85,30 +85,30 @@ var cashRegister = (function () {
 
   function clickNumber (x) {
 
-    if (decimal === true) {
+      if (decimal === true) {
 
-      if (decimalNum[0] === '0' && zero === false) {
-        decimalNum.splice(0, 1, x);
+        if (decimalNum[0] === '0' && zero === false) {
+          decimalNum.splice(0, 1, x);
 
-      } else if ((decimalNum[0] !== '0' || zero === true) && decimalNum[1] === '0') {
-          decimalNum.splice(1, 1, x);
+        } else if ((decimalNum[0] !== '0' || zero === true) && decimalNum[1] === '0') {
+            decimalNum.splice(1, 1, x);
 
-        } else {
-            return;
-          }
+          } else {
+              return;
+            }
 
-    } else {
+      } else {
 
-        if (baseNum[0] === '0') {
-          baseNum.splice(0, 1, x);
+          if (baseNum[0] === '0') {
+            baseNum.splice(0, 1, x);
 
-        } else {
-            baseNum.push(x);
-          }
-      }
+          } else {
+              baseNum.push(x);
+            }
+        }
 
-    updateMoney();
-  }
+      updateMoney();
+    }
 
   document.getElementById('1').addEventListener('click', function () {
 
@@ -220,5 +220,3 @@ var cashRegister = (function () {
   });
 
 })();
-
-console.log(memory);
