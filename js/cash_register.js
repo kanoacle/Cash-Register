@@ -9,13 +9,7 @@ function updateMoney () {
 }
 
 function displayMem () {
-  if ( mem[mem.length - 2] !== 0 || mem[mem.length - 1] === 0) {
-    display.innerHTML = '$' + parseFloat((parseFloat(memory * 100) / 100).toFixed(2));
-
-  } else {
-
-      display.innerHTML = '$' + parseFloat((parseFloat(memory * 100) / 100).toFixed(2));
-    }
+  display.innerHTML = '$' + (parseFloat(memory * 100) / 100).toFixed(2);
 }
 
 var myCalc = calculatorModule();
@@ -27,7 +21,6 @@ var num = baseNum.join("") + '.' + decimalNum.join("");
 var money = '$' + num;
 var zero = false;
 var total;
-var mem = memory.toString().split("");
 
 var cashRegister = (function () {
 
