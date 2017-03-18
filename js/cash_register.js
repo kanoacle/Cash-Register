@@ -52,7 +52,7 @@ var cashRegister = (function () {
          return;
 
       } else {
-          memory -= num;
+          memory -= parseFloat((parseFloat(num * 100) / 100).toFixed(2));
 
         }
 
@@ -382,12 +382,13 @@ var cashRegister = (function () {
 
   document.getElementById('add').addEventListener('click', function () {
 
-
+    total = num;
+    updateMoney();
   });
 
   document.getElementById('equal').addEventListener('click', function () {
 
-
+    total = myCalc.load(parseFloat(num));
   });
 
 })();
