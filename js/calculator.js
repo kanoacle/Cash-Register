@@ -1,7 +1,6 @@
 var calculatorModule = (function(){
 //private
-  var baseNum = 0.00;
-  var memory = baseNum.toFixed(2);
+  var memory = 0;
   var total = 0;
 //public
   return {
