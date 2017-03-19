@@ -30,12 +30,19 @@ var cashRegister = (function () {
 
   document.getElementById('deposit').addEventListener('click', function () {
 
-    memory += Number(display.innerHTML.replace('$', ''));
-    baseNum.splice(0, baseNum.length, '0');
-    decimalNum.splice(0, 2, '0', '0');
-    decimal = false;
-    zero = false;
-    updateMoney();
+    if (Number(display.innerHTML.replace('$', '')) < 0) {
+      display.innerHTML = 'KEEP THAT SHIT';
+
+    } else {
+
+        memory += Number(display.innerHTML.replace('$', ''));
+        baseNum.splice(0, baseNum.length, '0');
+        decimalNum.splice(0, 2, '0', '0');
+        decimal = false;
+        zero = false;
+        updateMoney();
+
+      }
   });
 
   document.getElementById('withdraw').addEventListener('click', function () {
@@ -43,7 +50,7 @@ var cashRegister = (function () {
     if (num === '0.00') {
       return;
 
-    } else if (number > memory) {
+    } else if (Number(display.innerHTML.replace('$', '')) > memory) {
          display.innerHTML = "YOU BROKE, FOOL!";
          return;
 
@@ -238,6 +245,12 @@ var cashRegister = (function () {
 
   document.getElementById('equal').addEventListener('click', function () {
 
+    if (op === myCalc.divide && Number(display.innerHTML.replace('$', '')) === 0) {
+
+      display.innerHTML = "ya serious?";
+
+    } else {
+
         op(Number(display.innerHTML.replace('$', '')));
         display.innerHTML = '$' + parseFloat(parseFloat(myCalc.getTotal() * 100) / 100).toFixed(2);
 
@@ -245,6 +258,7 @@ var cashRegister = (function () {
         decimalNum.splice(0, 2, '0', '0');
         decimal = false;
         zero = false;
+      }
   });
 
 })();
