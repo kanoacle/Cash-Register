@@ -9,7 +9,7 @@ function updateMoney () {
 }
 
 function displayMem () {
-  display.innerHTML = '$' + memory;
+  display.innerHTML = '$' + parseFloat(parseFloat(memory * 100) / 100).toFixed(2);
 }
 
 var myCalc = calculatorModule();
@@ -30,7 +30,7 @@ var cashRegister = (function () {
 
   document.getElementById('deposit').addEventListener('click', function () {
 
-    memory += total;
+    memory += Number(num);
     baseNum.splice(0, baseNum.length, '0');
     decimalNum.splice(0, 2, '0', '0');
     decimal = false;
@@ -244,8 +244,8 @@ var cashRegister = (function () {
       display.innerHTML = '$0.00';
 
     } else {
-        op(Number(display.innerHTML));
-        display.innerHTML = '$' + parseFloat((parseFloat(total * 100) / 100).toFixed(2));
+        op(Number(num));
+        display.innerHTML = '$' + parseFloat(parseFloat(myCalc.getTotal() * 100) / 100).toFixed(2);
 
       }
 
