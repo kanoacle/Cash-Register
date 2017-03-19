@@ -190,6 +190,8 @@ var cashRegister = (function () {
 
     if (baseNum[0] !== '0') {
           baseNum.push('00');
+    } else {
+      return;
     }
 
     updateMoney();
