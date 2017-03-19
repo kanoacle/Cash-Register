@@ -1,10 +1,10 @@
 function displayNum () {
-  display.innerHTML = money;
+  display.innerHTML = '$' + parseFloat(parseFloat(money * 100) / 100).toFixed(2);
 }
 
 function updateMoney () {
   num = baseNum.join("") + '.' + decimalNum.join("");
-  money = '$' + num;
+  money = num;
   displayNum();
 }
 
@@ -17,8 +17,8 @@ var memory = myCalc.recallMemory();
 var decimal = false;
 var baseNum = ['0'];
 var decimalNum = ['0', '0'];
-var num = baseNum.join("") + '.' + decimalNum.join("");
-var money = '$' + num;
+var num = '$' + baseNum.join("") + '.' + decimalNum.join("");
+var money = Number(num.replace('$', ""));
 var zero = false;
 var op;
 var number = parseFloat((parseFloat(num * 100) / 100).toFixed(2));
@@ -30,7 +30,7 @@ var cashRegister = (function () {
 
   document.getElementById('deposit').addEventListener('click', function () {
 
-    memory += Number(num);
+    memory += Number(display.innerHTML.replace('$', ''));
     baseNum.splice(0, baseNum.length, '0');
     decimalNum.splice(0, 2, '0', '0');
     decimal = false;
@@ -43,12 +43,12 @@ var cashRegister = (function () {
     if (num === '0.00') {
       return;
 
-    } else if (num > memory) {
+    } else if (number > memory) {
          display.innerHTML = "YOU BROKE, FOOL!";
          return;
 
       } else {
-          memory -= parseFloat((parseFloat(num * 100) / 100).toFixed(2));
+          memory -= Number(display.innerHTML.replace('$', ''));
 
         }
 
@@ -182,8 +182,6 @@ var cashRegister = (function () {
 
     if (baseNum[0] !== '0') {
           baseNum.push('00');
-    } else if (display.innerHTML === total) {
-      return;
     }
 
     updateMoney();
@@ -196,7 +194,7 @@ var cashRegister = (function () {
 
   document.getElementById('divide').addEventListener('click', function () {
 
-    myCalc.load(Number(num));
+    myCalc.load(Number(display.innerHTML.replace('$', '')));
     op = myCalc.divide;
 
     baseNum.splice(0, baseNum.length, '0');
@@ -207,7 +205,7 @@ var cashRegister = (function () {
 
   document.getElementById('multiply').addEventListener('click', function () {
 
-    myCalc.load(Number(num));
+    myCalc.load(Number(display.innerHTML.replace('$', '')));
     op = myCalc.multiply;
 
     baseNum.splice(0, baseNum.length, '0');
@@ -218,7 +216,7 @@ var cashRegister = (function () {
 
   document.getElementById('subtract').addEventListener('click', function () {
 
-    myCalc.load(Number(num));
+    myCalc.load(Number(display.innerHTML.replace('$', '')));
     op = myCalc.subtract;
 
     baseNum.splice(0, baseNum.length, '0');
@@ -229,7 +227,7 @@ var cashRegister = (function () {
 
   document.getElementById('add').addEventListener('click', function () {
 
-    myCalc.load(Number(num));
+    myCalc.load(Number(display.innerHTML.replace('$', '')));
     op = myCalc.add;
 
     baseNum.splice(0, baseNum.length, '0');
@@ -240,18 +238,13 @@ var cashRegister = (function () {
 
   document.getElementById('equal').addEventListener('click', function () {
 
-    if (total === Infinity) {
-      display.innerHTML = '$0.00';
-
-    } else {
-        op(Number(num));
+        op(Number(display.innerHTML.replace('$', '')));
         display.innerHTML = '$' + parseFloat(parseFloat(myCalc.getTotal() * 100) / 100).toFixed(2);
-
-      }
 
         baseNum.splice(0, baseNum.length, '0');
         decimalNum.splice(0, 2, '0', '0');
+        decimal = false;
+        zero = false;
   });
 
 })();
-console.log('hello');
