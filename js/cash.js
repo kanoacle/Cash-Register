@@ -20,7 +20,9 @@ var decimalNum = ['0', '0'];
 var num = baseNum.join("") + '.' + decimalNum.join("");
 var money = '$' + num;
 var zero = false;
-var total;
+var op;
+var number = parseFloat((parseFloat(num * 100) / 100).toFixed(2));
+var display = document.getElementById('display');
 
 var cashRegister = (function () {
 
@@ -80,6 +82,7 @@ var cashRegister = (function () {
     decimalNum.splice(0, 2, '0', '0');
     decimal = false;
     zero = false;
+    tot = 0;
     updateMoney();
   });
 
@@ -195,28 +198,52 @@ var cashRegister = (function () {
 
   document.getElementById('divide').addEventListener('click', function () {
 
+    myCalc.load(Number(num));
+    op = myCalc.divide;
 
+    baseNum.splice(0, baseNum.length, '0');
+    decimalNum.splice(0, 2, '0', '0');
+    decimal = false;
+    zero = false;
   });
 
   document.getElementById('multiply').addEventListener('click', function () {
 
+    myCalc.load(Number(num));
+    op = myCalc.multiply;
 
+    baseNum.splice(0, baseNum.length, '0');
+    decimalNum.splice(0, 2, '0', '0');
+    decimal = false;
+    zero = false;
   });
 
   document.getElementById('subtract').addEventListener('click', function () {
 
+    myCalc.load(Number(num));
+    op = myCalc.subtract;
 
+    baseNum.splice(0, baseNum.length, '0');
+    decimalNum.splice(0, 2, '0', '0');
+    decimal = false;
+    zero = false;
   });
 
   document.getElementById('add').addEventListener('click', function () {
 
-    total = num;
-    updateMoney();
+    myCalc.load(Number(num));
+    op = myCalc.add;
+
+    baseNum.splice(0, baseNum.length, '0');
+    decimalNum.splice(0, 2, '0', '0');
+    decimal = false;
+    zero = false;
   });
 
   document.getElementById('equal').addEventListener('click', function () {
 
-    total = myCalc.load(parseFloat(num));
+    op(Number(num));
+    display.innerHTML = '$' + parseFloat(parseFloat(myCalc.getTotal() * 100) / 100).toFixed(2);
   });
 
 })();
