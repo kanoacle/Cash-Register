@@ -1,5 +1,9 @@
 function displayNum () {
-  display.innerHTML = '$' + parseFloat(parseFloat(money * 100) / 100).toFixed(2);
+  if (money < 1000000000000) {
+    display.innerHTML = '$' + parseFloat(parseFloat(money * 100) / 100).toFixed(2);
+  } else {
+    display.innerHTML = "AIN'T THAT RICH";
+  }
 }
 
 function updateMoney () {
@@ -247,13 +251,14 @@ var cashRegister = (function () {
 
     if (op === myCalc.divide && Number(display.innerHTML.replace('$', '')) === 0) {
 
-      display.innerHTML = "ya serious?";
+      display.innerHTML = "YA SERIOUS?";
 
-    } else {
+    } else if (op(Number(display.innerHTML.replace('$', ''))) >= 1000000000) {
+        display.innerHTML = "AIN'T THAT RICH";
 
+      } else {
         op(Number(display.innerHTML.replace('$', '')));
         display.innerHTML = '$' + parseFloat(parseFloat(myCalc.getTotal() * 100) / 100).toFixed(2);
-
         baseNum.splice(0, baseNum.length, '0');
         decimalNum.splice(0, 2, '0', '0');
         decimal = false;
