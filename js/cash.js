@@ -9,7 +9,7 @@ function updateMoney () {
 }
 
 function displayMem () {
-  display.innerHTML = '$' + (parseFloat(memory * 100) / 100).toFixed(2);
+  display.innerHTML = '$' + memory;
 }
 
 var myCalc = calculatorModule();
@@ -23,20 +23,14 @@ var zero = false;
 var op;
 var number = parseFloat((parseFloat(num * 100) / 100).toFixed(2));
 var display = document.getElementById('display');
+var total = myCalc.getTotal();
 
 var cashRegister = (function () {
 
 
   document.getElementById('deposit').addEventListener('click', function () {
 
-    if (num === '0.00') {
-      return;
-
-    } else {
-      memory += parseFloat((parseFloat(num * 100) / 100).toFixed(2));
-
-      }
-
+    memory += total;
     baseNum.splice(0, baseNum.length, '0');
     decimalNum.splice(0, 2, '0', '0');
     decimal = false;
@@ -78,11 +72,12 @@ var cashRegister = (function () {
 
   document.getElementById('clear').addEventListener('click', function () {
 
+    myCalc.load(0);
     baseNum.splice(0, baseNum.length, '0');
     decimalNum.splice(0, 2, '0', '0');
     decimal = false;
     zero = false;
-    tot = 0;
+    total = 0;
     updateMoney();
   });
 
@@ -132,6 +127,7 @@ var cashRegister = (function () {
 
     clickNumber('4');
   });
+
   document.getElementById('5').addEventListener('click', function () {
 
     clickNumber('5');
@@ -186,6 +182,8 @@ var cashRegister = (function () {
 
     if (baseNum[0] !== '0') {
           baseNum.push('00');
+    } else if (display.innerHTML === total) {
+      return;
     }
 
     updateMoney();
@@ -242,8 +240,17 @@ var cashRegister = (function () {
 
   document.getElementById('equal').addEventListener('click', function () {
 
-    op(Number(num));
-    display.innerHTML = '$' + parseFloat(parseFloat(myCalc.getTotal() * 100) / 100).toFixed(2);
+    if (total === Infinity) {
+      display.innerHTML = '$0.00';
+
+    } else {
+        op(Number(display.innerHTML));
+        display.innerHTML = '$' + parseFloat((parseFloat(total * 100) / 100).toFixed(2));
+
+      }
+
+        baseNum.splice(0, baseNum.length, '0');
+        decimalNum.splice(0, 2, '0', '0');
   });
 
 })();
