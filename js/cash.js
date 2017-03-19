@@ -254,3 +254,4 @@ var cashRegister = (function () {
   });
 
 })();
+console.log('hello');
