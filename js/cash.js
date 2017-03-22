@@ -32,7 +32,7 @@ var cashRegister = (function () {
   document.getElementById('deposit').addEventListener('click', function () {
 
     if (Number(display.innerHTML.replace('$', '')) < 0) {
-      display.innerHTML = 'KEEP THAT SHIT';
+      display.innerHTML = 'NAHHHHHHHHH';
 
     } else {
 
